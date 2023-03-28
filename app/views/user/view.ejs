@@ -1,0 +1,199 @@
+<% layout('./../layouts/default') -%>
+    <div class="row">
+        <div class="col-12">
+            <div class="widget pad30-65">
+                <h4 class="font-20 mb-30">User View</h4>
+                <div class="row">
+                    <%if(user.image){%>
+                        <div class="col-lg-7">
+                            <div class="form-group mb-3">
+                                <img style="width: 100px; height: 100px; border-radius: 50%; border: 1px solid #d3d3d3"
+                                    src="<%=url%><%=user.image%>" alt="<%= user.name %>" class="img-fluid mt-3">
+                            </div>
+                        </div>
+                        <%}%>
+                            <%if(user.name){%>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-3">
+                                        <label>Name: </label>
+                                        <%= user.name %>
+                                    </div>
+                                </div>
+                                <%}%>
+                                    <%if(user.dob){%>
+                                        <div class="col-lg-6">
+                                            <div class="form-group mb-3">
+                                                <label>DOB: </label>
+                                                <%= user.dob %>
+                                            </div>
+                                        </div>
+                                        <%}%>
+                                        <div class="col-lg-6">
+                                            <div class="form-group mb-3">
+                                                <label>Email: </label> <%= user.email %>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group mb-3">
+                                                <label>Phone Number: </label> <%= user.phoneNumber %>
+                                            </div>
+                                        </div>
+                                        <%if(user.levelOfEducationId){%>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-3">
+                                                    <label>Level of Education: </label> <%= user.levelOfEducationId.name %>
+                                                </div>
+                                            </div>
+                                            <%}%>
+                                            <%if(interestedIn){%>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group mb-3">
+                                                        <label>Interested In: </label> <%= interestedIn.interestedIn %>
+                                                    </div>
+                                                </div>
+                                                <%}%>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group mb-3">
+                                                        <label>Status: </label> <%- user.isSuspended ? '<span class="badge label-table badge-secondary">In-Active</span>':'<span class="badge label-table badge-success">Active</span>' %>
+                                                    </div>
+                                                </div>
+                                                <%if(user.bio){%>
+                                                    <div class="col-lg-7">
+                                                        <div class="form-group mb-3">
+                                                            <label>Bio: </label> <%= user.bio %>
+                                                        </div>
+                                                    </div>
+                                                    <%}%>
+                </div>  
+
+                                                    
+                <%if(characteristics==""){%>
+                    <%}else{%> 
+                    <!-- <label style="color:#f7f7f7; font-weight:bold;margin-top: 1rem; ">Characteristics</label><br> -->
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <div class="form-group mb-3">
+                                        <label style="color:#f7f7f7; font-weight:bold;margin-top: 1rem; ">Characteristics</label>
+                                            <%characteristics.forEach(function(data, index){%>
+                                                <span style="background: #8B1DD8;  padding: 6px 15px; border-radius: 30px; color: #f7f7f7;"><img style="width: 15px; height: 15px;margin-right:3px;margin-bottom: 3px;" src="<%= siteUrl %>/images/Vector.png" alt=""><%=data.characteristicsId.name%></span>
+                                            <% }); %>  
+                                    </div>  
+                                </div>   
+                            </div>                              
+                      <%}%>                              
+                                                    
+                                                        
+                                                        
+                <%if(media){%>
+                    <label style="color:#f7f7f7; font-weight:bold;">Media </label><br>
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="form-group mb-3">
+                                <%if(media.image2){%>
+                                <img style="width: 100px; height: 100px; border-radius: 50%;margin-left: 2rem; border: 1px solid #d3d3d3;"
+                                 src="<%=url%><%=media.image2%>"
+                                 alt="<%= user.name %>" class="img-fluid mt-3">
+                                <%}%>
+                                <%if(media.image3){%>
+                                    <img style="width: 100px; height: 100px; border-radius: 50%;margin-left: 1rem; border: 1px solid #d3d3d3;"
+                                     src="<%=url%><%=media.image3%>"
+                                     alt="<%= user.name %>" class="img-fluid mt-3">
+                                    <%}%>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                            
+                <%if(userPlan){%>
+                    <label style="color:#f7f7f7; font-weight:bold;margin-top: 1rem; ">Plan Information </label><br>
+                    <div class="row">
+                    <%if(userPlan.plansId.image){%>
+                        <div class="col-lg-7">
+                            <div class="form-group mb-3">
+                                <img style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid #d3d3d3"
+                                    src="<%=url%><%=userPlan.plansId.image%>" alt="<%= user.name %>" class="img-fluid mt-3">
+                            </div>
+                        </div>
+                        <%}%>
+                    <%if(userPlan.plansId.name){%>
+                    <div class="col-lg-7">
+                        <div class="form-group mb-3">
+                            <label>Name: </label> <%= userPlan.plansId.name %>
+                        </div>
+                    </div>
+                    <%}%> 
+                    <%if(userPlan.plansId.type){%>
+                        <div class="col-lg-7">
+                            <div class="form-group mb-3">
+                                <label>Type: </label> <%= userPlan.plansId.type %>
+                            </div>
+                        </div>
+                        <%}%> 
+                    <%if(userPlan.duration){%>
+                    <div class="col-lg-7">
+                        <div class="form-group mb-3">
+                            <label>Duration: </label> <%= userPlan.duration %>
+                        </div>
+                    </div>
+                <%}%>                            
+                                                        
+                    <%}%>
+
+                    </div>
+
+                <%if(questionary==""){%>
+                    <%}else{%>
+                <div class="row" >
+                    <div class="col-12 mt-3 mb-5">
+                        <div class="widget pad50-60 mb-30" style="background-color: rgb(70, 64, 70);">
+                            <div class="pt-30">
+                                <h4 class="font-20 ">Questionary</h4>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="text-nowrap text-white d-table">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No.</th>
+                                            <th>Question</th>
+                                            <th>Picked Answer</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       
+                                            <%questionary.forEach(function(data, index){%>
+                                                <tr>
+                                                    <td><%= index + 1 %></td>
+                                                    <td>
+                                                        <%=data.questionId.question%>
+                                                    </td>
+                                                    <td>
+                                                        <%if(data.yes){%>
+                                                        <span>YES : </span><%=data.yes%>
+                                                        <%}%>
+                                                        <%if(data.no){%>
+                                                            <span>No : </span><%=data.no%>
+                                                            <%}%>
+                                                            <%if(data.default){%>
+                                                                <span>Default : </span><%=data.default%>
+                                                                <%}%>
+                                                    </td>
+                                                </tr>
+                                                
+                                                <% }); %>  
+                                        
+                                        
+                                        
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <%}%>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,107 @@
+<% layout('./../layouts/default') -%>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-body pt-3 widget">
+            <h4 class="font-30 mb-30">Edit Quiz </h4>
+            <form method="POST" action="/question/update/<%=userdata._id%>" id="editQuetionPage">
+                <div class="row pl-3">
+                    <div class="form-group col-lg-7">
+                        <label>Question:<span class="text-danger">*</span></label>
+                        <textarea name="question" id="question" class="form-control" style="height: 100px;" placeholder="Question" autocomplete="off" required><%=userdata.question %></textarea>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <label>Yes:<span class="text-danger">*</span></label>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <input type="number" name="yes_opt1" id="yes_opt1" class="form-control" placeholder="Option1" value="<%=userdata.yes[0] %>" required>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input type="number" name="yes_opt2" id="yes_opt2" class="form-control" placeholder="Option2" value="<%=userdata.yes[1] %>" required>
+                                </div>
+                            </div>                                                                       
+                        </div>                                           
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <label>No:<span class="text-danger">*</span></label>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <input type="number" name="no_opt1" id="no_opt1" class="form-control" placeholder="Option1" value="<%=userdata.no[0] %>" required>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input type="number" name="no_opt2" id="no_opt2" class="form-control" placeholder="Option2" value="<%=userdata.no[1] %>" required>
+                                </div>
+                            </div>                                                                       
+                        </div>                                           
+                    </div>    
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <label>Default:<span class="text-danger">*</span></label>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <input type="number" name="default" id="default" class="form-control" placeholder="Default" value="<%=userdata.default%>" required>
+                                </div>
+                            </div>                                                                       
+                        </div>                                           
+                    </div>        
+                    <div class="col-lg-12 text-left">
+                        <div class="form-group mb-3 text-center">
+                            <button id="submitAddPracticeForm" type="submit" class="btn btn-primary waves-effect waves-light">Update Quiz</button>
+                        </div>
+                    </div>
+                </div> 
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script>
+        $("#editQuetionPage").validate({
+  rules: {
+    question: {
+      required: true,
+    },
+    yes_opt1: {
+      required: true,
+    },
+    yes_opt2: {
+      required: true,
+    },
+    no_opt1: {
+      required: true,
+    },
+    no_opt2: {
+      required: true,
+    },
+    default: {
+      required: true,
+    },
+  },
+  messages: {
+    question: {
+      required: '<p style="color:red;">required</p>',
+    },
+    yes_opt1: {
+      required: '<p style="color:red;">required</p>',
+    },
+    yes_opt2: {
+      required: '<p style="color:red;">required</p>',
+    },
+    no_opt2: {
+      required: '<p style="color:red;">required</p>',
+    },
+    no_opt1: {
+      required: '<p style="color:red;">required</p>',
+    },
+    default: {
+      required: '<p style="color:red;">required</p>',
+    },
+  },
+  submitHandler: function (form) {
+    form.submit();
+  },
+});
+    </script>

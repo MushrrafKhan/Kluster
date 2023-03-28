@@ -1,0 +1,42 @@
+<% layout('./../layouts/default') -%>
+    <div class="row">
+        <div class="col-lg-12 mb-5">
+            <div class="card-body pt-3 widget">
+                <h4 class="font-20 mb-30">Add characteristics </h4>
+                <form method="POST" action="/characteristics/save" class="mt-1 login-input" id="addCharacteristicsPage">
+                    <div class="row">
+                        <div class="form-group mb-3 col-lg-6">
+                            <label>Enter characteristics Name:</label>
+                            <input type="text" name="name" class="form-control" placeholder="characteristics Name"
+                                autocomplete="off" id="name">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <div class="form-group mb-3 text-center">
+                            <button id="submitProfileForm" type="submit"
+                                class="btn btn-primary waves-effect waves-light">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script>
+        $("#addCharacteristicsPage").validate({
+  rules: {
+    name: {
+      required: true,
+    },
+  },
+  messages: {
+    name: {
+      required: '<p style="color:red;">required</p>',
+    },
+  },
+  submitHandler: function (form) {
+    form.submit();
+  },
+});
+    </script>

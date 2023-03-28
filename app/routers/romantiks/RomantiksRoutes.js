@@ -1,0 +1,16 @@
+const express = require("express");
+const router = express.Router();
+const RomantiksController = require("./RomantiksController");
+const {verifyToken} = require('../../../util/auth');
+const validations = require("./RomantiksValidations");
+const { validate } = require("../../../util/validations.js");
+router.get("/", verifyToken,RomantiksController.listPage);
+router.get("/list", verifyToken,RomantiksController.list);
+router.get("/add", verifyToken,RomantiksController.add);
+router.post("/save", verifyToken,RomantiksController.save);
+router.get("/view/:id", validate(validations.requireId, "params", {}, "/romantiks"), verifyToken,RomantiksController.view);
+router.get('/edit/:id',verifyToken,RomantiksController.edit);
+router.post("/updateData/:id",validate(validations.requireId, "params", {}, "/romantiks"),verifyToken,RomantiksController.updateData);
+router.get("/update-status",validate(validations.updateStatus, "query", {}, "/romantiks"),verifyToken,RomantiksController.updateStatus);
+router.get("/delete/:id",validate(validations.requireId, "params", {}, "/romantiks"),verifyToken,RomantiksController.delete);
+module.exports = router;

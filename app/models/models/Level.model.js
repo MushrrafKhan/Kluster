@@ -1,0 +1,39 @@
+const mongoose = require("mongoose"),
+    Schema = mongoose.Schema;
+const LevelSchema = new Schema(
+    {
+        stageId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Pattern',
+        },
+        verteces: {
+            type: Number
+        },
+        
+        levelNo: {
+            type: Number
+        },
+        isSuspended: {
+            type: Boolean,
+            default: false,
+        },
+        isDeleted: {
+            type: Boolean,
+            default: false,
+        },
+    },
+    {
+        timestamps: {
+            createdAt: "created",
+            updatedAt: "updated",
+        },
+        id: false,
+        toJSON: {
+            getters: true,
+        },
+        toObject: {
+            getters: true,
+        },
+    }
+);
+module.exports = mongoose.model("Level", LevelSchema);

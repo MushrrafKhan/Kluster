@@ -1,0 +1,12 @@
+const express = require("express");
+const router = express.Router();
+const UserController = require("./UserController");
+const {verifyToken} = require('../../../util/auth');
+const validations = require("./UserValidations");
+const { validate } = require("../../../util/validations.js");
+router.get("/", verifyToken,UserController.listPage);
+router.get("/list", verifyToken,UserController.list);
+// router.post("/datainsert",UserController.Datainsert);
+router.get("/view/:id", validate(validations.requireId, "params", {}, "/user"), verifyToken,UserController.view);
+router.get("/update-status",validate(validations.updateStatus, "query", {}, "/user"),verifyToken,UserController.updateStatus);
+module.exports = router;

@@ -1,0 +1,116 @@
+<% layout('./../layouts/default') -%>
+<div class="row">
+    <div class="col-12 mt-3 mb-5">
+        <div class="widget pad50-60 mb-30">
+            <div class="pt-30">
+                <h4 class="font-20 ">Replenish Actions</h4>
+            </div>
+            <div class="table-responsive">
+                <table class="text-nowrap text-white d-table">
+                    <thead>
+                        <tr>
+                            <th>Currency Actions</th>
+                            <th><%=plans[0].name%></th>
+                            <th><%=plans[1].name%></th>
+                            <th><%=plans[2].name%></th>
+                            <th><%=plans[3].name%></th>
+                            <th><%=plans[4].name%></th>
+                            <th>Price(In $)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Teken (Like)
+                            </td>
+                            <%teken.forEach(function(teken1, index) {%>
+                                <td>
+                                    <%=teken1.value%>
+                                </td>
+                                <%});%>
+                                <td><%=teken[0].price%></td>
+                                <td><a href="/replenish/replenishEdit?price=<%=teken[0].price%>&name=Teken">Edit</a>
+                                </tr>
+                        <tr>
+                            <td>
+                                Koi (Love)
+                            </td>
+                            <%koi.forEach(function(teken1, index) {%>
+                                <td>
+                                    <%=teken1.value%>
+                                </td>
+                                <%});%>
+                                <td><%=koi[0].price%></td>
+                                <td><a href="/replenish/replenishEdit?price=<%=koi[0].price%>&name=Koi">Edit</a>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Kori (Hold)
+                            </td>
+                            <%kori.forEach(function(teken1, index) {%>
+                                <td>
+                                    <%=teken1.value%>
+                                </td>
+                                <%});%>
+                                <td><%=kori[0].price%></td>
+                                <td><a href="/replenish/replenishEdit?price=<%=kori[0].price%>&name=Kori">Edit</a>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Saski (Lock)
+                            </td>
+                            <%saski.forEach(function(teken1, index) {%>
+                                <td>
+                                    <%=teken1.value%>
+                                </td>
+                                <%});%>
+                                <td><%=saski[0].price%></td>
+                                <td><a href="/replenish/replenishEdit?price=<%=saski[0].price%>&name=Saski">Edit</a>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Romantiks
+                            </td>
+                            <%romantik.forEach(function(teken1, index) {%>
+                                <td>
+                                    <%=teken1.value%>
+                                </td>
+                                <%});%>
+                                <td><%=romantik[0].price%></td>
+                                <td><a href="/replenish/replenishEdit?price=<%=romantik[0].price%>&name=Romantik">Edit</a>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Messages
+                            </td>
+                            <%messages.forEach(function(teken1, index) {%>
+                                <td>
+                                    <%=teken1.value%>
+                                </td>
+                                <%});%>
+                                <td><%=messages[0].price%></td>
+                                <td><a href="/replenish/replenishEdit?price=<%=messages[0].price%>&name=Messages">Edit</a>
+                                </tr>
+                        <tr>
+                            <td>
+                                Replenish Time
+                            </td>
+                            <%plans.forEach(function(plan, index) {%>
+                                <td>
+                                    <%=plan.replenishTime%>
+                                </td>
+                                <%});%>
+                        </tr>
+                    
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

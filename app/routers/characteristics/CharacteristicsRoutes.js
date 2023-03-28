@@ -1,0 +1,16 @@
+const express = require("express");
+const router = express.Router();
+const CharacteristicsController = require("./CharacteristicsController");
+const {verifyToken} = require('../../../util/auth');
+const validations = require("./CharacteristicsValidations");
+const { validate } = require("../../../util/validations.js");
+router.get("/", verifyToken,CharacteristicsController.listPage);
+router.get("/list", verifyToken,CharacteristicsController.list);
+router.get("/add", verifyToken,CharacteristicsController.add);
+router.post("/save", verifyToken,CharacteristicsController.save);
+router.get("/view/:id",validate(validations.requireId, "params", {}, "/characteristics"),verifyToken,CharacteristicsController.view);
+router.get("/edit/:id",validate(validations.requireId, "params", {}, "/characteristics"),verifyToken,CharacteristicsController.edit);
+router.post("/update/:id",validate(validations.requireId, "params", {}, "/characteristics"),verifyToken,CharacteristicsController.updateData);
+router.get("/update-status",validate(validations.updateStatus, "query", {}, "/characteristics"),verifyToken,CharacteristicsController.updateStatus);
+router.get("/delete/:id",validate(validations.requireId, "params", {}, "/characteristics"),verifyToken,CharacteristicsController.delete);
+module.exports = router;

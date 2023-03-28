@@ -1,0 +1,155 @@
+<% layout('layouts/default') -%>
+<div class="col-sm-12 mb-2">
+    <div class="page-title-box">
+        <h3 class="page-title">My Profile</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="widget pad50-60 mb-30">
+            <div class="">
+                <form id="profileForm" method="post">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>First Name<span class="text-danger">*</span></label>
+                                <input type="text" name="firstName" class="form-control"
+                                       placeholder="Full Name"
+                                       autocomplete="off" value="<%= admin.firstName %>">
+                                <div class="text-danger firstName"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Last Name<span class="text-danger">*</span></label>
+                                <input type="text" name="lastName" class="form-control" placeholder="Last Name"
+                                       autocomplete="off" value="<%= admin.lastName || '' %>">
+                                <div class="text-danger lastName"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Email <span class="text-danger">*</span></label>
+                                <input type="email" name="email" class="form-control" readonly placeholder="Email"
+                                       autocomplete="off" value="<%= admin.email %>">
+                                <div class="text-danger email"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Contact Number <span class="text-danger">*</span></label>
+                                <input type="text" name="contactNumber" class="form-control"
+                                       placeholder="Contact Number" autocomplete="off"
+                                       value="<%= admin.contactNumber || '' %>">
+                                <div class="text-danger contactNumber"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 text-right">
+                            <div class="form-group mb-3 text-right">
+                                <button id="submitProfileForm" type="submit"
+                                        class="btn btn-primary waves-effect waves-light">Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        const PROFILE_FORM = <%- JSON.stringify(DM('PROFILE_FORM')) %>;
+        $("#profileForm").validate({
+            errorPlacement: function (error, element) {
+                const name = $(element).attr("name");
+                error.appendTo($("." + name));
+            },
+            submitHandler: function (form) {
+                $('#submitProfileForm').attr('disabled', 'disabled');
+                form.submit();
+            },
+            rules: {
+                firstName: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 30,
+                },
+                lastName: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 30,
+                },
+                email: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 80,
+                    pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    remote: {
+                        url: "/is-email-exists",
+                        type: "post",
+                        data: {
+                            id: () => '<%= currentUser._id %>'
+                        }
+                    }
+                },
+                contactNumber: {
+                    required: true,
+                    // pattern: /^\+?[\d]{4,15}$/
+                    pattern: /^(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$/
+                },
+            },
+            messages: PROFILE_FORM
+        });
+    })
+</script>
+
+<script>
+    function showTime() {
+   var date=new Date();
+   var d = date.getDate();
+   var w = date.getDay();
+    var m= date.getMonth()+1;
+    var y= date.getFullYear();
+    d = d < 10 ? '0'+d : d;
+    m = m < 10 ? '0'+m : m;
+    var strDate = d + '-' + m + '-' + y;
+    var hours = date.getHours();
+     var minutes = date.getMinutes();
+     var ampm = hours >= 12 ? 'pM' : 'aM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+     var date_=strDate+'  '+strTime
+    
+     var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
+     var dayNames= ["Sun,","Mon,","Tue,","Wed,","Thu,","Fri,","Sat,"];
+
+     document.getElementById("h").innerText = hours;
+     document.getElementById("h").textContent = hours;
+
+     document.getElementById("m").innerText = minutes;
+     document.getElementById("m").textContent = minutes;
+
+     document.getElementById("ampm").innerText = ampm;
+     document.getElementById("ampm").textContent = ampm;
+
+    //  document.getElementById("dn").innerText = dayNames[w];
+    //  document.getElementById("dn").textContent = dayNames[w];
+
+     document.getElementById("d").innerText = d;
+     document.getElementById("d").textContent = d;
+
+     document.getElementById("mn").innerText = m;
+     document.getElementById("mn").textContent = m;
+
+     document.getElementById("y").innerText = y;
+     document.getElementById("y").textContent = y;
+
+   
+    }
+   
+    showTime();
+    setInterval(showTime, 1000);
+</script>

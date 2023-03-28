@@ -1,0 +1,40 @@
+<% layout('./../layouts/default') -%>
+<div class="row">
+    <div class="col-12">
+        <div class="widget pad30-65">
+            <h4 class="font-20 mb-30">Edit Game </h4>
+            <form method="post" action="/game/update/<%=game._id%>" id="editGamePage">
+                <div class="row">
+                    <div class="form-group mb-3 col-lg-6">
+                        <label>Enter Color Code:</label>
+                        <input type="text" name="colorCode" class="form-control" placeholder="color code " id="colorCode" autocomplete="off" value="<%=game.colorCode %>" required>
+                    </div>
+                </div> 
+                <div class="col-lg-12 text-center">
+                    <div class="form-group mb-3 text-center">
+                        <button id="submitProfileForm" type="submit" class="btn btn-primary waves-effect waves-light">update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script>
+        $("#editGamePage").validate({
+  rules: {
+    colorCode: {
+      required: true,
+    },
+  },
+  messages: {
+    colorCode: {
+      required: '<p style="color:red;">required</p>',
+    },
+  },
+  submitHandler: function (form) {
+    form.submit();
+  },
+});
+    </script>

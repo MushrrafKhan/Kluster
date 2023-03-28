@@ -1,0 +1,229 @@
+<% layout('./../layouts/default') -%>
+  <div class="row">
+    <div class="col-12">
+      <div class="widget pad30-65">
+        <h4 class="font-20 mb-30">Edit Plan </h4>
+        <form method="post" action="/plans/update/<%=userdata._id%>" id="editPlanPage" >
+          <div class="row">
+            <div class="form-group mb-3 col-lg-6">
+              <label>Name:</label>
+              <input type="text" name="name" class="form-control" placeholder="Plan Name" id="name" autocomplete="off"
+                value="<%=userdata.name %>" required readonly>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Nick Name:</label>
+              <input type="text" name="nickName" class="form-control" placeholder="nick name" id="nickName"
+                autocomplete="off" value="<%=userdata.nickName %>" required readonly>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>1 Month Price($):</label>
+              <input type="text" name="price" class="form-control" placeholder=" 1 Month Price" id="price"
+                autocomplete="off" value="<%=userdata.price %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>6 Months Price($):</label>
+              <input type="text" name="price6" class="form-control" placeholder=" 6 Months Price" id="price6"
+                autocomplete="off" value="<%=userdata.price6 %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>12 Months Price($):</label>
+              <input type="text" name="price12" class="form-control" placeholder=" 12 Months Price" id="price12"
+                autocomplete="off" value="<%=userdata.price12 %>" required>
+            </div>
+            
+            <!-- <div class="form-group mb-3 col-lg-6">
+              <label>Romantiks:</label>
+              <input type="text" name="romantiks" class="form-control" placeholder="romantiks" id="romantiks"
+                autocomplete="off" value="<%=userdata.romantiks %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>DM/DAY:</label>
+              <input type="text" name="dm" class="form-control" placeholder="DM/DAY" id="dm" autocomplete="off"
+                value="<%=userdata.dm %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Miles:</label>
+              <input type="text" name="miles" class="form-control" placeholder="miles" id="miles" autocomplete="off"
+                value="<%=userdata.miles %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Profile Picture:</label>
+              <input type="text" name="profilePicture" class="form-control" placeholder="Profile Picture"
+                id="profilePicture" autocomplete="off" value="<%=userdata.profilePicture %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Video:</label>
+              <input type="text" name="video" class="form-control" placeholder="video" id="video" autocomplete="off"
+                value="<%=userdata.video %>" required>
+            </div>
+
+
+            <div class="form-group mb-3 col-lg-6">
+              <label>Questions:</label>
+              <input type="text" name="questions" class="form-control" placeholder="questions" id="questions"
+                autocomplete="off" value="<%=userdata.questions %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Bio Limit:</label>
+              <input type="text" name="bioLimit" class="form-control" placeholder="Bio Limit" id="bioLimit"
+                autocomplete="off" value="<%=userdata.bioLimit %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Pers Traits 1-9 of 55:</label>
+              <input type="text" name="perstraitsOf55" class="form-control" placeholder="pers traits 1-9 Of 55"
+                id="perstraitsOf55" autocomplete="off" value="<%=userdata.perstraitsOf55 %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Teken:</label>
+              <input type="text" name="like" class="form-control" placeholder="Teken" id="like" autocomplete="off"
+                value="<%=userdata.like %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Koi:</label>
+              <input type="text" name="love" class="form-control" placeholder="koi" id="love" autocomplete="off"
+                value="<%=userdata.love %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Kori:</label>
+              <input type="text" name="hold" class="form-control" placeholder="kori" id="hold" autocomplete="off"
+                value="<%=userdata.hold %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Saski:</label>
+              <input type="text" name="lock" class="form-control" placeholder="saski" id="lock" autocomplete="off"
+                value="<%=userdata.lock %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>% Comptiblity:</label>
+              <input type="text" name="comptiblity" class="form-control" placeholder="comptiblity" id="comptiblity"
+                autocomplete="off" value="<%=userdata.comptiblity %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Scrolling Caps:</label>
+              <input type="text" name="scrollingCaps" class="form-control" placeholder="scrolling caps"
+                id="scrollingCaps" autocomplete="off" value="<%=userdata.scrollingCaps %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Ads:</label>
+              <input type="text" name="ads" class="form-control" placeholder="ads" id="ads" autocomplete="off"
+                value="<%=userdata.ads %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Free Membership:</label>
+              <input type="text" name="freeMembership" class="form-control" placeholder="free membership"
+                id="freeMembership" autocomplete="off" value="<%=userdata.freeMembership %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Age:</label>
+              <input type="text" name="age" class="form-control" placeholder="age" id="age" autocomplete="off"
+                value="<%=userdata.age %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Interests:</label>
+              <input type="text" name="interests" class="form-control" placeholder="interests" id="interests"
+                autocomplete="off" value="<%=userdata.interests %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Zodiac Description:</label>
+              <input type="text" name="zodiacDescription" class="form-control" placeholder="zodiac description"
+                id="zodiacDescription" autocomplete="off" value="<%=userdata.zodiacDescription %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Phone Calls:</label>
+              <input type="text" name="phoneCalls" class="form-control" placeholder="phone calls" id="phoneCalls"
+                autocomplete="off" value="<%=userdata.phoneCalls %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Video Calls:</label>
+              <input type="text" name="videoCalls" class="form-control" placeholder="video calls" id="videoCalls"
+                autocomplete="off" value="<%=userdata.videoCalls %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Chat Background:</label>
+              <input type="text" name="chatBackground" class="form-control" placeholder="chat background"
+                id="chatBackground" autocomplete="off" value="<%=userdata.chatBackground %>" required>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Image:</label>
+              <input type="file" name="image" class="form-control" placeholder="image" id="image" autocomplete="off">
+            </div> -->
+            
+            
+            <div class="form-group mb-3 col-lg-6">
+              <label>Type:</label><br>
+              <select name="type"  disabled="true">
+                <option value="FREE" <%if(userdata.type==="FREE"){%>selected<%}%> >FREE</option>
+                <option value="PAID" <%if(userdata.type==="PAID"){%>selected<%}%> >PAID</option>
+              </select>
+            </div>
+            <div class="form-group mb-3 col-lg-6">
+              <label>Description:</label>
+              <textarea name="description" class="form-control" style="height: 100px;" id="description"
+                placeholder="Description" autocomplete="off" required ><%=userdata.description %></textarea>
+
+            </div>
+
+          </div>
+          <div class="col-lg-12 text-center">
+            <div class="form-group mb-3 text-center">
+              <button id="submitProfileForm" type="submit"
+                class="btn btn-primary waves-effect waves-light">update</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+  <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+  <script>
+    CKEDITOR.replace('description');
+    $("#editPlanPage").validate({
+      rules: {
+        name: {
+          required: true,
+        },
+        price: {
+          required: true,
+        },
+        price6: {
+          required: true,
+        },
+        price12: {
+          required: true,
+        },
+        nickName: {
+          required: true,
+        },
+        description: {
+          required: true,
+        },
+      },
+      messages: {
+        name: {
+          required: '<p style="color:red;">required</p>',
+        },
+        price: {
+          required: '<p style="color:red;">required</p>',
+        },
+        price6: {
+          required: '<p style="color:red;">required</p>',
+        },
+        price12: {
+          required: '<p style="color:red;">required</p>',
+        },
+        nickName: {
+          required: '<p style="color:red;">required</p>',
+        },
+        description: {
+          required: '<p style="color:red;">required</p>',
+        },
+
+      },
+      submitHandler: function (form) {
+        form.submit();
+      },
+    });
+  </script>

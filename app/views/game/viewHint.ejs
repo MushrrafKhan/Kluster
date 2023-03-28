@@ -1,0 +1,20 @@
+<% layout('./../layouts/default') -%>
+<div class="row">
+    <div class="col-12">
+        <div class="widget pad30-65">
+            <h4 class="font-20 mb-30">View Hint </h4>
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="form-group mb-3">
+                        <label>Hint: </label> <%= gameHint.rule %>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="form-group mb-3">
+                        <label>Status: </label> <%- gameHint.isSuspended ? '<span class="badge label-table badge-secondary">In-Active</span>':'<span class="badge label-table badge-success">Active</span>' %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   

@@ -1,0 +1,212 @@
+<% layout('./../layouts/default') -%>
+    <div class="row">
+        <div class="col-12">
+            <div class="widget pad30-65">
+                <h4 class="font-20 mb-30">Add Pattern </h4>
+                <div class="row">
+                    <div class="form-group mb-3 col-lg-6">
+                        <h6 class="font-10 mb-15">Click on graph to create a pattern</h6>
+                        <canvas id="myChart"
+                            style="width:100%;max-width:400px;height:700px;background-color: rgb(184, 159, 207);margin-top: 20px;">
+                        </canvas>
+                    </div>
+                    <div class="form-group mb-3 col-lg-6">
+                        <h6 class="font-10 mb-15">view pattern</h6>
+                        <canvas id="viewChart"
+                            style="width:100%;max-width:400px;height:700px;background-color: rgb(184, 159, 207);margin-top: 20px;">
+                        </canvas>
+                    </div>
+                    <form action="/game/savePattern/<%=_id%>" method="post" id="addLevelForm">
+                        <div class="row">
+                            <div class="form-group mb-6 col-lg-7">
+                                <label style="color: white;">Coordiantes:</label>
+                                <input type="text" name="coordinate" class="form-control" placeholder="coordinate"
+                                    id="coordinate" autocomplete="off" required>
+                                <input type="hidden" name="coordinate1" class="form-control" placeholder="coordinate"
+                                    id="coordinate1" autocomplete="off" value="" required>
+                            </div>
+                            <div class="form-group mb-6 col-lg-7">
+                                <label style="color: white;">No of Verteces:</label>
+                                <input type="number" name="verteces" class="form-control" placeholder="verteces"
+                                    id="verteces" autocomplete="off" value="0" required>
+                            </div>
+                            <div class="col-lg-12 text-center">
+                                <div class="form-group mb-3 text-center">
+                                    <button id="submitPatternForm" type="submit"
+                                        class="btn btn-primary waves-effect waves-light">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script>
+        let asdf = []
+
+        let coordinate = document.getElementById("coordinate")
+        let coordinate1 = document.getElementById("coordinate1")
+        let verteces = document.getElementById("verteces")
+        const config = {
+            type: 'scatter',
+            options: {
+                legend: { display: false },
+                scales: {
+                    xAxes: [{ ticks: { min: 50, max: 400 } }],
+                    yAxes: [{ ticks: { min: 50, max: 400 } }],
+                }
+            }
+        };
+
+        // render init block
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        // function clickHandler(chart, click) {
+        //     const { canvas } = chart;
+        //     let rect = canvas.getBoundingClientRect();
+        //     // const x = click.clientX - rect.left;
+        //     // const y = click.clientY - rect.top;
+
+        //     // console.log(`x : ${x}`)
+        //     // console.log(`y : ${y}`)
+        //     console.log(canvas)
+
+        //     var yTop = rect.top;
+        //     console.log(yTop)
+        //     var yBottom = canvas.chartArea.bottom;
+
+        //     var yMin = canvas.scales['y-axis-0'].min;
+        //     var yMax = canvas.scales['y-axis-0'].max;
+        //     var newY = 0;
+
+        //     if (click.offsetY <= yBottom && click.offsetY >= yTop) {
+        //         newY = Math.abs((click.offsetY - yTop) / (yBottom - yTop));
+        //         newY = (newY - 1) * -1;
+        //         newY = newY * (Math.abs(yMax - yMin)) + yMin;
+        //     };
+
+        //     var xTop = canvas.chartArea.left;
+        //     var xBottom = canvas.chartArea.right;
+        //     var xMin = canvas.scales['x-axis-0'].min;
+        //     var xMax = canvas.scales['x-axis-0'].max;
+        //     var newX = 0;
+
+        //     if (click.offsetX <= xBottom && click.offsetX >= xTop) {
+        //         newX = Math.abs((click.offsetX - xTop) / (xBottom - xTop));
+        //         newX = newX * (Math.abs(xMax - xMin)) + xMin;
+        //     };
+
+        //     console.log(newX, newY);
+
+        // }
+
+        function chartClicked(chart, event) {
+            var yTop = chart.chartArea.top;
+            var yBottom = chart.chartArea.bottom;
+
+            var yMin = chart.scales['y-axis-1'].min;
+            var yMax = chart.scales['y-axis-1'].max;
+            var newY = 0;
+
+            if (event.offsetY <= yBottom && event.offsetY >= yTop) {
+                newY = Math.abs((event.offsetY - yTop) / (yBottom - yTop));
+                newY = (newY - 1) * -1;
+                newY = newY * (Math.abs(yMax - yMin)) + yMin;
+            };
+
+            var xTop = chart.chartArea.left;
+            var xBottom = chart.chartArea.right;
+            var xMin = chart.scales['x-axis-1'].min;
+            var xMax = chart.scales['x-axis-1'].max;
+            var newX = 0;
+
+            if (event.offsetX <= xBottom && event.offsetX >= xTop) {
+                newX = Math.abs((event.offsetX - xTop) / (xBottom - xTop));
+                newX = newX * (Math.abs(xMax - xMin)) + xMin;
+            };
+            let x = Math.floor(newX)
+            let y = Math.floor(newY)
+
+            coordinate.value += `{"x":${x},"y":${y}};`
+
+
+            let fg = { x: x, y: y }
+            asdf.push(fg)
+            coordinate1.value = asdf
+
+            verteces.value = Number(verteces.value) + 1
+            const viewConfig1 = {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        pointRadius: 4,
+                        pointBackgroundColor: "rgb(0,0,255)",
+                        data: asdf
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    scales: {
+                        xAxes: [{ ticks: { min: 50, max: 400 } }],
+                        yAxes: [{ ticks: { min: 50, max: 400 } }],
+                    }
+                }
+            };
+            new Chart(
+                document.getElementById('viewChart'),
+                viewConfig1
+            );
+
+
+        };
+
+        document.getElementById('myChart').addEventListener('click', (click) => {
+            chartClicked(myChart, click);
+        })
+
+        // new Chart("myChart", {
+        //     type: "scatter",
+        //     data: {
+        //         datasets: [{
+        //             pointRadius: 4,
+        //             pointBackgroundColor: "rgb(0,0,255)"
+        //         }]
+        //     },
+        //     options: {
+        //         legend: { display: false },
+        //         scales: {
+        //             xAxes: [{ ticks: { min: -10, max: 10 } }],
+        //             yAxes: [{ ticks: { min: -10, max: 10 } }],
+        //         }
+        //     }
+
+        // });
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script>
+        $("#addLevelForm").validate({
+            rules: {
+                
+                coordinate: {
+                    required: true,
+                },
+            },
+            messages: {
+                
+                coordinate: {
+                    required: '<p style="color:red;">please draw pattern</p>',
+                },
+            },
+            submitHandler: function (form) {
+                form.submit();
+            },
+        });
+    </script>

@@ -1,0 +1,40 @@
+<% layout('./../layouts/default') -%>
+<div class="row">
+    <div class="col-12">
+        <div class="widget pad30-65">
+            <h4 class="font-20 mb-30">Edit Hint </h4>
+            <form method="post" action="/game/updateHint/<%=gameHint._id%>" id="editHintPage">
+                <div class="row">
+                    <div class="form-group mb-3 col-lg-6">
+                        <label>Hint:</label>
+                        <input type="text" name="rule" class="form-control" placeholder="Hint" id="rule" autocomplete="off" value="<%=gameHint.rule %>" required>
+                    </div>
+                </div> 
+                <div class="col-lg-12 text-center">
+                    <div class="form-group mb-3 text-center">
+                        <button id="submitProfileForm" type="submit" class="btn btn-primary waves-effect waves-light">update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script>
+        $("#editHintPage").validate({
+  rules: {
+    rule: {
+      required: true,
+    },
+  },
+  messages: {
+    rule: {
+      required: '<p style="color:red;">required</p>',
+    },
+  },
+  submitHandler: function (form) {
+    form.submit();
+  },
+});
+    </script>

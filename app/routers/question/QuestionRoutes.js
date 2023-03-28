@@ -1,0 +1,16 @@
+const express = require("express");
+const router = express.Router();
+const QuestionController = require("./QuestionController");
+const {verifyToken} = require('../../../util/auth');
+const validations = require("./QuestionValidations");
+const { validate } = require("../../../util/validations.js");
+router.get("/", verifyToken,QuestionController.listPage);
+router.get("/list", verifyToken,QuestionController.list);
+// router.get("/add", verifyToken,QuestionController.add);
+// router.post("/save", verifyToken,QuestionController.save);
+router.get("/view/:id",validate(validations.requireId, "params", {}, "/question"),verifyToken,QuestionController.view); 
+router.get("/edit/:id",validate(validations.requireId, "params", {}, "/question"),verifyToken,QuestionController.edit);
+router.post("/update/:id",validate(validations.requireId, "params", {}, "/question"),verifyToken,QuestionController.updateData);
+// router.get("/update-status",validate(validations.updateStatus, "query", {}, "/question"),verifyToken,QuestionController.updateStatus);
+// router.get("/delete/:id",validate(validations.requireId, "params", {}, "/question"),verifyToken,QuestionController.delete);
+module.exports=router;

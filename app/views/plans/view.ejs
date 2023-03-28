@@ -1,0 +1,169 @@
+<% layout('./../layouts/default') -%>
+<div class="row" >
+    <div class="col-12">
+        <div class="widget pad30-65">
+            <h4 class="font-20 mb-30">View Plans </h4>
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="form-group mb-3">
+                        <img style="width: 100px; height: 100px; border-radius: 50%; border: 1px solid #d3d3d3"
+                         src="<%=url%><%=user.image%>"
+                         alt="<%= user.name %>" class="img-fluid mt-3">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Name: </label> <%= user.name %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Nick Name: </label> <%= user.nickName %>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>1 Month Price: </label> <%= user.price %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>6 Months Price: </label> <%= user.price6 %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>12 Months Price: </label> <%= user.price12 %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Type: </label> <%= user.type %>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7">
+                    <div class="form-group mb-3">
+                        <label>Description: </label> <%- user.description %>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="form-group mb-3">
+                        <h4>Plan Details </h4> 
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Romantiks: </label> <%= user.romantiks %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>DM/DAY: </label> <%= user.dm %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Miles: </label> <%= user.miles %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Profile Picture: </label> <%= user.profilePicture %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Video: </label> <%= user.video %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Questions: </label> <%= user.questions %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Bio Limit: </label> <%= user.bioLimit %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Pers traits 1-9 Of 55: </label> <%= user.perstraitsOf55 %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Teken: </label> <%= user.like %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Koi: </label> <%= user.love %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Kori: </label> <%= user.hold %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Saski: </label> <%= user.lock %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>% Comptiblity: </label> <%= user.comptiblity %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Scrolling Caps: </label> <%= user.scrollingCaps %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Ads: </label> <%= user.ads %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Free Membership: </label> <%= user.freeMembership %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Age: </label> <%= user.age %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Interests: </label> <%= user.interests %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Zodiac Description: </label> <%= user.zodiacDescription %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Phone Calls: </label> <%= user.phoneCalls %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Video Calls: </label> <%= user.videoCalls %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Chat Background: </label> <%= user.chatBackground %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   

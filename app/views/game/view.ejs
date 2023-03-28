@@ -1,0 +1,27 @@
+<% layout('./../layouts/default') -%>
+<div class="row">
+    <div class="col-12">
+        <div class="widget pad30-65">
+            <h4 class="font-20 mb-30">View Game </h4>
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="form-group mb-3">
+                        <img style="width: 100px; height: 100px; border-radius: 50%; border: 1px solid #d3d3d3"
+                         src="<%=url%><%=game.image%>"
+                         alt="<%= game.name %>" class="img-fluid mt-3">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Name: </label> <%= game.name %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Color Code: </label> <%= game.colorCode %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   

@@ -1,0 +1,55 @@
+<% layout('./../layouts/default') -%>
+<div class="row">
+    <div class="col-12">
+        <div class="">
+            <div class="">
+                <div class="widget pad30-65">
+                    <h4 class="font-30 mb-30">View Question </h4>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="form-group mb-3">
+                                <label class="mt-1" style="font-size:27px;font-weight:700">Question </label> <br> <p style="font-size: 18px; font-weight:500;"> <%= user.question %></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label>Yes:<span class="text-danger">*</span></label>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <label style="font-size:20px;font-weight:700">Option 1:  <%=user.yes[0] %></label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label style="font-size:20px;font-weight:700">Option 2:  <%=user.yes[1] %></label>
+                                    </div>
+                                </div>                                                                       
+                            </div>                                           
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label>No:<span class="text-danger">*</span></label>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <label style="font-size:20px;font-weight:700">Option 1:  <%=user.no[0] %></label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label style="font-size:20px;font-weight:700">Option 2:  <%=user.no[1] %></label>
+                                    </div>
+                                </div>                                                                       
+                            </div>                                           
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label>Default:<span class="text-danger">*</span></label>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <label style="font-size:20px;font-weight:700">Option:  <%=user.default %></label> 
+                                    </div>
+                                </div>                                                                       
+                            </div>                                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

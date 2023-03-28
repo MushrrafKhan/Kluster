@@ -1,0 +1,16 @@
+const express = require("express");
+const router = express.Router();
+const TutorialController = require("./TutorialController");
+const {verifyToken} = require('../../../util/auth');
+const validations = require("./TutorialValidations");
+const { validate } = require("../../../util/validations.js");
+router.get("/", verifyToken,TutorialController.listPage);
+router.get("/list", verifyToken,TutorialController.list);
+router.get("/add", verifyToken,TutorialController.add);
+router.post("/save", verifyToken,TutorialController.save);
+router.get("/view/:id", validate(validations.requireId, "params", {}, "/tutorial"), verifyToken,TutorialController.view);
+router.get("/edit/:id",validate(validations.requireId, "params", {}, "/tutorial"),verifyToken,TutorialController.edit);
+router.post("/update/:id",validate(validations.requireId, "params", {}, "/tutorial"),verifyToken,TutorialController.updateData);
+router.get("/update-status",validate(validations.updateStatus, "query", {}, "/tutorial"),verifyToken,TutorialController.updateStatus);
+router.get("/delete/:id",validate(validations.requireId, "params", {}, "/tutorial"),verifyToken,TutorialController.delete);
+module.exports = router;

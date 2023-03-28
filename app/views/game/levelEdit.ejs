@@ -1,0 +1,42 @@
+<% layout('./../layouts/default') -%>
+<div class="row">
+    <div class="col-12">
+        <div class="widget pad30-65">
+            <h4 class="font-20 mb-30">Edit Reward </h4>
+            <form method="post" action="/game/editPatternSave/<%=_id%>" id="editLevelPage">
+                <div class="row">
+                    <div class="form-group mb-3 col-lg-6">
+                        <label>Verteces:</label>
+                        <input type="number" name="verteces" class="form-control" placeholder="verteces" id="verteces" autocomplete="off" value="<%=level.verteces %>" required min="4" max="7">
+                    </div>
+                </div> 
+                <div class="col-lg-12 text-center">
+                    <div class="form-group mb-3 text-center">
+                        <button id="submitProfileForm" type="submit" class="btn btn-primary waves-effect waves-light">update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script>
+        $("#editLevelPage").validate({
+  rules: {
+    verteces: {
+      required: true,
+    },
+  },
+  messages: {
+    verteces: {
+      required: '<p style="color:red;margin-top: 1rem;">required</p>',
+      min: '<p style="color:red;margin-top: 1rem;">Please enter a value greater than or equal to 4.</p>',
+      max: '<p style="color:red;margin-top: 1rem;">Please enter a value less than or equal to 7.</p>',
+    },
+  },
+  submitHandler: function (form) {
+    form.submit();
+  },
+});
+    </script>

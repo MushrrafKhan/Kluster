@@ -1,0 +1,27 @@
+<% layout('./../layouts/default') -%>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-body pt-3 widget">
+            <h4 class="font-30 mb-30">Edit Tutorial </h4>
+            <form method="POST" action="/tutorial/update/<%=userdata._id%>">
+                <div class="row pl-3">
+                    <div class="col-lg-7">
+                        <div class="form-group">
+                            <label>Tutorial Name:<span class="text-danger">*</span></label>
+                            <input type="text" name="tutorialName" class="form-control" placeholder="Tutorial Name" value="<%=userdata.tutorialName %>" required>
+                        </div>                                           
+                    </div>
+                    <div class="form-group col-lg-7">
+                        <label>Tutorial Description:<span class="text-danger">*</span></label>
+                        <textarea name="tutorialDescription" class="form-control" style="height: 100px;" placeholder="Tutorial Description" autocomplete="off" required><%=userdata.tutorialDescription %></textarea>
+                    </div>
+                    <div class="col-lg-12 text-left">
+                        <div class="form-group mb-3 text-center">
+                            <button id="submitAddPracticeForm" type="submit" class="btn btn-primary waves-effect waves-light">Update Tutorial</button>
+                        </div>
+                    </div>
+                </div> 
+            </form>
+        </div>
+    </div>
+</div>

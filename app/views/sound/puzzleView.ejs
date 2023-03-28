@@ -1,0 +1,30 @@
+<% layout('./../layouts/default') -%>
+<div class="row">
+    <div class="col-12">
+        <div class="widget pad30-65">
+            <h4 class="font-30 mb-30">Puzzle View</h4>
+            <div class="row">
+                <div class="col-lg-12 " style="padding-bottom: 15px;">
+                    <audio controls>
+                        <source src="<%=url%>" type="audio/mp3">
+                    </audio>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Title: </label> <%= user.title %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Puzzle Type: </label> <%= user.puzzleType %>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="form-group mb-3">
+                        <label>Status: </label> <%- user.isSuspended ? '<span class="badge label-table badge-secondary">In-Active</span>':'<span class="badge label-table badge-success">Active</span>'  %>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>

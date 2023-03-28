@@ -1,0 +1,30 @@
+<% layout('./../layouts/default') -%>
+<div class="row">
+    <div class="col-12">
+        <div class="widget pad30-65">
+            <h4 class="font-20 mb-30">View Reward </h4>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Title: </label> <%= reward.title %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Reward(In $): </label> <%= reward.reward %>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Type: </label> <%= reward.rewardType %>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-6">
+                    <div class="form-group mb-3">
+                        <label>Status: </label> <%- reward.isSuspended ? '<span class="badge label-table badge-secondary">In-Active</span>':'<span class="badge label-table badge-success">Active</span>' %>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>   
